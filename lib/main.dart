@@ -7,8 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Stratup Name Generator',
+      title: 'Startup Name Generator',
       home: new RandomWords(),
+      theme: new ThemeData(
+        primaryColor: Colors.white,
+      ),
     );
   }
 }
@@ -25,7 +28,10 @@ class RandomWordsState extends State<RandomWords> {
   final _saved = new Set<WordPair>();
 
   final _biggerFont = const TextStyle(
-      fontSize: 18.0, fontStyle: FontStyle.italic, fontFamily: 'Roboto', color: Colors.green);
+      fontSize: 18.0,
+      fontStyle: FontStyle.italic,
+      fontFamily: 'Roboto',
+      color: Colors.green);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +40,9 @@ class RandomWordsState extends State<RandomWords> {
       appBar: new AppBar(
         title: new Text("Startup Name Generator"),
         centerTitle: true,
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body: _buildSuggestion(),
     );
@@ -64,9 +73,9 @@ class RandomWordsState extends State<RandomWords> {
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
       ),
-      onTap: (){
-        setState((){
-          if(alreadySaved){
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
             _saved.remove(pair);
           } else {
             _saved.add(pair);
@@ -74,5 +83,30 @@ class RandomWordsState extends State<RandomWords> {
         });
       },
     );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final tiles = _saved.map((pair) {
+        return new ListTile(
+          title: new Text(
+            pair.asPascalCase,
+            style: _biggerFont,
+          ),
+        );
+      });
+      final divided =
+          ListTile.divideTiles(tiles: tiles, context: context).toList();
+
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Saved Suggestions"),
+          centerTitle: true,
+        ),
+        body: new ListView(
+          children: divided,
+        ),
+      );
+    }));
   }
 }
