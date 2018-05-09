@@ -20,13 +20,7 @@ class NetPageState extends State<NetPage> {
         centerTitle: true,
       ),
       body: _buildNetBody(),
-    );
-  }
-
-  Widget _buildNetBody() {
-    return new Container(
-      alignment: Alignment.bottomCenter,
-      child:new BottomNavigationBar(
+      bottomNavigationBar: new BottomNavigationBar(
         currentIndex: _currentIndex,
         items: [
           new BottomNavigationBarItem(
@@ -35,13 +29,25 @@ class NetPageState extends State<NetPage> {
               icon: new Icon(Icons.home), title: new Text("Home")),
           new BottomNavigationBarItem(
               icon: new Icon(Icons.settings), title: new Text("Settings"))
-        ], type: BottomNavigationBarType.fixed, fixedColor: Colors.yellowAccent,
-        onTap: (int selected){
-          setState((){
+        ],
+        type: BottomNavigationBarType.fixed,
+        onTap: (int selected) {
+          setState(() {
             this._currentIndex = selected;
           });
         },
-      )
+      ),
+    );
+  }
+
+  Widget _buildNetBody() {
+    final List<Widget> transitions = <Widget>[];
+    transitions.add(new Text("Page One"));
+    transitions.add(new Text("Page Two"));
+    transitions.add(new Text("Page Three"));
+    return new IndexedStack(
+      children: transitions,
+      index: _currentIndex,
     );
   }
 }
