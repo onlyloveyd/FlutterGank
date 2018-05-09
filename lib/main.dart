@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gank/page/net_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -42,6 +43,8 @@ class RandomWordsState extends State<RandomWords> {
         centerTitle: true,
         actions: <Widget>[
           new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+          new IconButton(
+              icon: new Icon(Icons.settings), onPressed: _pushNetPage)
         ],
       ),
       body: _buildSuggestion(),
@@ -83,6 +86,12 @@ class RandomWordsState extends State<RandomWords> {
         });
       },
     );
+  }
+
+  void _pushNetPage() {
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      return new NetPage();
+    }));
   }
 
   void _pushSaved() {
