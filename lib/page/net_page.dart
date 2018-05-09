@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gank/page/feed_page.dart';
+import 'package:flutter_gank/page/about_page.dart';
 
 class NetPage extends StatefulWidget {
   @override
@@ -42,9 +44,9 @@ class NetPageState extends State<NetPage> {
 
   Widget _buildNetBody() {
     final List<Widget> transitions = <Widget>[];
-    transitions.add(new Text("Page One"));
+    transitions.add(new FeedPage());
     transitions.add(new Text("Page Two"));
-    transitions.add(new Text("Page Three"));
+    transitions.add(new AboutPage());
     return new IndexedStack(
       children: transitions,
       index: _currentIndex,
