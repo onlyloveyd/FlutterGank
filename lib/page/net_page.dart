@@ -24,21 +24,24 @@ class NetPageState extends State<NetPage> {
   }
 
   Widget _buildNetBody() {
-    return new BottomNavigationBar(
-      currentIndex: _currentIndex,
-      items: [
-      new BottomNavigationBarItem(
-          icon: new Icon(Icons.map), title: new Text("Map")),
-      new BottomNavigationBarItem(
-          icon: new Icon(Icons.home), title: new Text("Home")),
-      new BottomNavigationBarItem(
-          icon: new Icon(Icons.settings), title: new Text("Settings"))
-    ], type: BottomNavigationBarType.fixed, fixedColor: Colors.yellowAccent,
-      onTap: (int selected){
-        setState((){
-          this._currentIndex = selected;
-        });
-      },
-     );
+    return new Container(
+      alignment: Alignment.bottomCenter,
+      child:new BottomNavigationBar(
+        currentIndex: _currentIndex,
+        items: [
+          new BottomNavigationBarItem(
+              icon: new Icon(Icons.map), title: new Text("Map")),
+          new BottomNavigationBarItem(
+              icon: new Icon(Icons.home), title: new Text("Home")),
+          new BottomNavigationBarItem(
+              icon: new Icon(Icons.settings), title: new Text("Settings"))
+        ], type: BottomNavigationBarType.fixed, fixedColor: Colors.yellowAccent,
+        onTap: (int selected){
+          setState((){
+            this._currentIndex = selected;
+          });
+        },
+      )
+    );
   }
 }
