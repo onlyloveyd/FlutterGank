@@ -11,7 +11,7 @@ class AboutPage extends StatefulWidget {
 
 class AboutPageState extends State<AboutPage> {
 
-  var _fetch_result = 'Unknown';
+  var fetchResult = 'Unknown';
 
   @override
   Widget build(BuildContext context) {
