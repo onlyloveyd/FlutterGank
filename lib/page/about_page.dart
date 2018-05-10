@@ -35,8 +35,8 @@ class AboutPageState extends State<AboutPage> {
       var response  = await request.close();
 
       if(response.statusCode == HttpStatus.OK) {
-        var json = await response.transform(UTF8.decoder).join();
-        var data = JSON.decode(json);
+        var json = await response.transform(utf8.decoder).join();
+        var data = jsonDecode(json);
 
         print(data['error']);
         print(data['results']);
