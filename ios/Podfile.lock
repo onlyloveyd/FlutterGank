@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_webview_plugin (0.0.1):
+    - Flutter
+  - url_launcher (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - flutter_webview_plugin (from `Pods/.symlinks/plugins/flutter_webview_plugin/ios`)
+  - url_launcher (from `Pods/.symlinks/plugins/url_launcher/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Pods/.symlinks/flutter/ios
+  flutter_webview_plugin:
+    :path: Pods/.symlinks/plugins/flutter_webview_plugin/ios
+  url_launcher:
+    :path: Pods/.symlinks/plugins/url_launcher/ios
+
+SPEC CHECKSUMS:
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  flutter_webview_plugin: 116575b48572029304775b768e9f15ebfc316274
+  url_launcher: 92b89c1029a0373879933c21642958c874539095
+
+PODFILE CHECKSUM: ea0518673586564c605fb6593d385c0e3708ff8d
+
+COCOAPODS: 1.5.0
