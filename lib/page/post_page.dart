@@ -66,10 +66,9 @@ class _PostWebViewState extends State<PostPage> {
     _onStateChanged =
         flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
           if (mounted) {
-            if(state!= WebViewState.finishLoad) {
+            if (state != WebViewState.finishLoad) {
               setState(() {
                 _history.add("onStateChanged: ${state.type} ${state.url}");
-                print('yidong'+ _history.toString());
                 loading = false;
               });
             } else {
@@ -94,11 +93,8 @@ class _PostWebViewState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     String title = widget.post['desc'] == null
-        ? widget.post['desc']
+        ? '一个陌生的地方'
         : widget.post['desc'];
-    var favIcon = loading
-        ? new CupertinoActivityIndicator()
-        : new Icon(Icons.rotate_right, color: Colors.white);
     return new WebviewScaffold(
       key: _scaffoldKey,
       url: widget.post['url'],
@@ -106,7 +102,21 @@ class _PostWebViewState extends State<PostPage> {
       appBar: new AppBar(
         title: new Text(title),
         actions: <Widget>[
-          favIcon
+          new Padding(padding: const EdgeInsets.all(4.0),
+            child: new IconButton(
+              icon: new Icon(Icons.refresh),
+              onPressed: () {
+
+              },),
+          ),
+          new Padding(padding: const EdgeInsets.all(4.0),
+            child: new IconButton(
+              icon: new Icon(Icons.share),
+              onPressed: () {
+
+              },),
+          ),
+
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gank/net/base_list.dart';
+import 'package:flutter_gank/net/category_list.dart';
 import 'package:flutter_gank/ext/constant.dart' as ext;
 
 class FeedPage extends StatefulWidget {
