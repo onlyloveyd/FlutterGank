@@ -5,12 +5,14 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gank/ext/data_repository.dart';
+import 'package:flutter_gank/page/post_page.dart';
 
 
-final String CATEGORY_URL_PREFIX =  'http://gank.io/api/data/';
+final String CATEGORY_URL_PREFIX = 'http://gank.io/api/data/';
 
 String generateCategoryUrl(feedType, pageSize, pageNum) {
-  return CATEGORY_URL_PREFIX + feedType + '/' + pageSize.toString() + '/' + pageNum.toString();
+  return CATEGORY_URL_PREFIX + feedType + '/' + pageSize.toString() + '/' +
+      pageNum.toString();
 }
 
 
@@ -69,19 +71,6 @@ Widget buildCategoryListView(BuildContext context, AsyncSnapshot snapshot) {
       return buildListViewBuilder(context, results);
     }
   }
-
-
-  switch (results.length) {
-    case 0:
-      return new Center(
-        child: new Card(
-          elevation: 16.0,
-          child: new Text("暂无数据"),
-        ),
-      );
-    default:
-      return buildListViewBuilder(context, results);
-  }
 }
 
 Widget buildListViewBuilder(context, List content) {
@@ -102,40 +91,55 @@ Widget buildRow(context, one) {
   PostData postData = PostData.fromJson(one);
   print(postData);
   if (postData.type == '福利') {
-    return new Card(
-      margin: new EdgeInsets.all(2.0),
-      child: new Padding(padding: new EdgeInsets.all(8.0),
-          child:
-          new SizedBox(
-            height: 300.0,
-            child: new Stack(
-              children: <Widget>[
-                new Positioned.fill(
-                    child:
-                    new FadeInImage.assetNetwork(
-                      placeholder: 'empty_data.png',
-                      image: postData.url,
-                      fit: BoxFit.cover,
-                      repeat: ImageRepeat.repeat,)
-                ),
-                new Positioned(
-                  bottom: 6.0,
-                  left: 6.0,
-                  right: 6.0,
-                  child: new FittedBox(
-                    fit: BoxFit.scaleDown,
-                    alignment: Alignment.bottomLeft,
-                    child: new Text(postData.desc,
-                      style: titleStyle,
+    return
+      new InkWell(
+          onTap: () {
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (BuildContext context) {
+                  return new PostPage(postData.toJson());
+                }));
+          }, child:
+      new Card(
+        margin: new EdgeInsets.all(2.0),
+        child: new Padding(padding: new EdgeInsets.all(8.0),
+            child:
+            new SizedBox(
+              height: 300.0,
+              child: new Stack(
+                children: <Widget>[
+                  new Positioned.fill(
+                      child:
+                      new FadeInImage.assetNetwork(
+                        placeholder: 'empty_data.png',
+                        image: postData.url,
+                        fit: BoxFit.cover,
+                        repeat: ImageRepeat.repeat,)
+                  ),
+                  new Positioned(
+                    bottom: 6.0,
+                    left: 6.0,
+                    right: 6.0,
+                    child: new FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.bottomLeft,
+                      child: new Text(postData.desc,
+                        style: titleStyle,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-      ),);
+                ],
+              ),
+            )
+        ),));
   } else {
     return
+      new InkWell(
+          onTap: () {
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (BuildContext context) {
+                  return new PostPage(postData.toJson());
+                }));
+          }, child:
       new Card(
         margin: new EdgeInsets.all(2.0),
         child: new Padding(padding: new EdgeInsets.all(8.0),
@@ -184,6 +188,7 @@ Widget buildRow(context, one) {
             ],
           ),
         ),
+      )
       );
   }
 }
