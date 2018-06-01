@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gank/net/category_list.dart';
+import 'package:flutter_gank/net/feed_list.dart';
 import 'package:flutter_gank/ext/constant.dart' as ext;
 
 class FeedPage extends StatefulWidget {
@@ -34,7 +34,6 @@ class FeedHomeState extends State<FeedPage>
       appBar: new AppBar(
         title: const Text('分类阅读'),
         bottom: new TabBar(
-          //indicator: _generateIndicator(),
           controller: _controller,
           indicatorColor: Theme
               .of(context)
@@ -51,15 +50,12 @@ class FeedHomeState extends State<FeedPage>
             child: new IconButton(
               icon: new Icon(Icons.reorder),
               onPressed: () {
-
-
               },),
           ),
           new Padding(padding: const EdgeInsets.all(4.0),
             child: new IconButton(
               icon: new Icon(Icons.search),
               onPressed: () {
-
 
               },),),
         ],
@@ -71,19 +67,6 @@ class FeedHomeState extends State<FeedPage>
           }).toList()),
     );
   }
-
-  Decoration _generateIndicator() {
-    return new ShapeDecoration(
-      shape: new RoundedRectangleBorder(
-        borderRadius: new BorderRadius.all(new Radius.circular(2.0)),
-        side: new BorderSide(
-            color: Colors.grey,
-            width: 1.0
-        ),
-      ),
-    );
-  }
-
 }
 
 class _Page {
@@ -100,23 +83,23 @@ class _Page {
 // 存储所有页面的列表
 final List<_Page> _allPages = <_Page>[
   new _Page(text: "all",
-      feedList: new FeedList(url:ext.generateCategoryUrl('all',10, 0))),
+      feedList: new FeedList(feedType:('all'))),
   new _Page(text: "Android",
-      feedList: new FeedList(url:ext.generateCategoryUrl('Android',10, 0))),
+      feedList: new FeedList(feedType:('Android'))),
   new _Page(text: "瞎推荐",
-      feedList: new FeedList(url:ext.generateCategoryUrl('瞎推荐',10, 0))),
+      feedList: new FeedList(feedType:('瞎推荐'))),
   new _Page(text: "iOS",
-      feedList: new FeedList(url:ext.generateCategoryUrl('iOS',10, 0))),
+      feedList: new FeedList(feedType:('iOS'))),
   new _Page(text: "前端",
-      feedList: new FeedList(url:ext.generateCategoryUrl('前端',10, 0))),
+      feedList: new FeedList(feedType:('前端'))),
   new _Page(text: "拓展资源",
-      feedList: new FeedList(url:ext.generateCategoryUrl('拓展资源',10, 0))),
+      feedList: new FeedList(feedType:('拓展资源'))),
   new _Page(text: "App",
-      feedList: new FeedList(url:ext.generateCategoryUrl('App',10, 0))),
+      feedList: new FeedList(feedType:('App'))),
   new _Page(text: "休息视频",
-      feedList: new FeedList(url:ext.generateCategoryUrl('休息视频',10, 0))),
+      feedList: new FeedList(feedType:('休息视频'))),
   new _Page(text: "福利",
-      feedList: new FeedList(url:ext.generateCategoryUrl('福利',10, 0)))
+      feedList: new FeedList(feedType:('福利')))
 ];
 
 

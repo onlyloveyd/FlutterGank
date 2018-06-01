@@ -32,7 +32,7 @@ class ArticlePageState extends State<ArticlePage> {
       body: new FutureBuilder(
           future: getPostHtml(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
-            print(snapshot.data);
+            //print(snapshot.data);
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
@@ -57,11 +57,11 @@ class ArticlePageState extends State<ArticlePage> {
                     List<dom.Element> head = element.getElementsByTagName('a');
                     List<dom.Element> author = element.getElementsByTagName(
                         'small');
-                    print(head[0].text);
-                    print("http://gank.io/" + head[0].attributes['href']);
-                    print(author[0].text.replaceAll('\(', '').replaceAll(
-                        '\)', ''));
-                    print(times[elements.indexOf(element)].text);
+                    //print(head[0].text);
+                   // print("http://gank.io/" + head[0].attributes['href']);
+                   // print(author[0].text.replaceAll('\(', '').replaceAll(
+                    //    '\)', ''));
+                   // print(times[elements.indexOf(element)].text);
                     mPost.add(new Post(
                         head[0].text, times[elements.indexOf(element)].text,
                         author[0].text.replaceAll('\(', '').replaceAll(

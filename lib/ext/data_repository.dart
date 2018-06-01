@@ -66,3 +66,51 @@ class PostData {
         'who': who,
       };
 }
+
+class SearchResponse {
+  int count;
+  bool error;
+  List<dynamic> results;
+
+  SearchResponse(this.count, this.error, this.results);
+
+  SearchResponse.fromJson(Map<String, dynamic> json){
+    this.count = json['count'];
+    this.error = json['error'];
+    this.results = json['results'];
+  }
+}
+
+class SearchData {
+
+  String ganhuo_id;
+  String desc;
+  String publishedAt;
+  String readability;
+  String type;
+  String url;
+  String who;
+
+  SearchData(this.ganhuo_id, this.desc, this.publishedAt,  this.readability, this.type, this.url,  this.who);
+
+  SearchData.fromJson(Map<String, dynamic> json){
+    this.ganhuo_id = json['ganhuo_id'];
+    this.desc = json['desc'];
+    this.publishedAt = json['publishedAt'];
+    this.readability = json['readability'];
+    this.type = json['type'];
+    this.url = json['url'];
+    this.who = json['who'];
+  }
+
+  Map<String, dynamic> toJson() =>
+      {
+        'ganhuo_id': ganhuo_id,
+        'desc': desc,
+        'publishedAt': publishedAt,
+        'readability': readability,
+        'type': type,
+        'url': url,
+        'who': who,
+      };
+}

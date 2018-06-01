@@ -10,9 +10,8 @@ import 'package:flutter_gank/page/post_page.dart';
 
 final String CATEGORY_URL_PREFIX = 'http://gank.io/api/data/';
 
-String generateCategoryUrl(feedType, pageSize, pageNum) {
-  return CATEGORY_URL_PREFIX + feedType + '/' + pageSize.toString() + '/' +
-      pageNum.toString();
+String generateCategoryUrl(feedType, pageSize) {
+  return CATEGORY_URL_PREFIX + feedType + '/' + pageSize.toString() + '/';
 }
 
 
@@ -110,7 +109,7 @@ Widget buildRow(context, one) {
                   new Positioned.fill(
                       child:
                       new FadeInImage.assetNetwork(
-                        placeholder: 'empty_data.png',
+                        placeholder: 'images/empty_data.png',
                         image: postData.url,
                         fit: BoxFit.cover,
                         repeat: ImageRepeat.repeat,)
@@ -153,7 +152,7 @@ Widget buildRow(context, one) {
                   child: new Text(postData.desc,
                     style: new TextStyle(fontSize: 16.0,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold),),
+                        ),),
                 ),),
               new Container(
                 margin: new EdgeInsets.fromLTRB(2.0, 4.0, 2.0, 4.0),
@@ -181,7 +180,10 @@ Widget buildRow(context, one) {
                   new Expanded(child:
                   new Align(
                     alignment: Alignment.centerRight,
-                    child: new Text(postData.publishedAt),
+                    child: new Text(getTimestampString(
+                        DateTime.parse(postData.publishedAt)),
+                      style: new TextStyle(
+                          fontSize: 12.0, color: Colors.grey),),
                   )),
                 ],
               )
@@ -210,20 +212,22 @@ Widget buildExceptionIndicator(String message) {
 
 Widget buildLoadingIndicator() {
   return new Center(
-    child: new Card(
-      elevation: 4.0,
-      child: new Padding(
-        padding: const EdgeInsets.all(8.0),
-        child:
-        new Wrap(
-          direction: Axis.vertical,
-          spacing: 8.0,
-          children: <Widget>[
-            new CupertinoActivityIndicator(),
-            new Text('正在加载中...'),
-          ],
-          crossAxisAlignment: WrapCrossAlignment.center,
-        ),),),
+    child: new CupertinoActivityIndicator(),
   );
+}
+String getTimestampString(DateTime date) {
+  DateTime curDate = new DateTime.now();
+  Duration diff = curDate.difference(date);
+  print("yidong");
+  if (diff.inDays > 0) {
+    return diff.inDays.toString() + "天前";
+  } else if (diff.inHours > 0) {
+    return diff.inHours.toString() + "小时前";
+  } else if (diff.inMinutes > 0) {
+    return diff.inMinutes.toString() + "分钟前";
+  } else if (diff.inSeconds > 0) {
+    return "刚刚";
+  }
+  return date.toString();
 }
 
