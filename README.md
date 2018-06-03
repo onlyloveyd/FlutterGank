@@ -23,25 +23,15 @@
 * [Website](http://www.onlyloveyd.cn/)
 * [JueJin](https://juejin.im/user/583e860867f356006bbedb90)
 
-## Android ScreenShot
-![](/screenshot/android/daily.jpg)
-![](/screenshot/android/category.jpg)
-![](/screenshot/android/girl.jpg)
-![](/screenshot/android/post.jpg)
-![](/screenshot/android/webview.jpg)
-![](/screenshot/android/about.jpg)
-![](/screenshot/android/bluetheme.jpg)
-![](/screenshot/android/blacktheme.jpg)
+## ScreenShot
+![](/screenshot/one.png)
+![](/screenshot/two.png)
+![](/screenshot/three.png)
+![](/screenshot/four.png)
+![](/screenshot/five.png)
+![](/screenshot/six.png)
+![](/screenshot/seven.png)
 
-## iOS ScreenShot
-![](/screenshot/ios/daily.png)
-![](/screenshot/ios/datepicker.png)
-![](/screenshot/ios/category.png)
-![](/screenshot/ios/girl.png)
-![](/screenshot/ios/post.png)
-![](/screenshot/ios/about.png)
-![](/screenshot/ios/purletheme.png)
-![](/screenshot/ios/blacktheme.png)
 
 ## Todo
 1. 数据缓存
