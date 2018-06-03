@@ -18,8 +18,6 @@
 2. 圆角
 3. 材料设计
 
-## Cover
-
 ## Author
 * [CSDN](http://blog.csdn.net/poorkick)
 * [Website](http://www.onlyloveyd.cn/)
