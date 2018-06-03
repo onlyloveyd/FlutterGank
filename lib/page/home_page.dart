@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gank/page/about_page.dart';
 import 'package:flutter_gank/page/article_page.dart';
 import 'package:flutter_gank/page/daily_page.dart';
 import 'package:flutter_gank/page/feed_page.dart';
@@ -37,8 +36,8 @@ class HomePageState extends State<HomePage> {
               icon: new Icon(Icons.category), title: new Text("分类阅读")),
           new BottomNavigationBarItem(
               icon: new Icon(Icons.whatshot), title: new Text("匠心写作")),
-          new BottomNavigationBarItem(
-              icon: new Icon(Icons.settings), title: new Text("关于")),
+//          new BottomNavigationBarItem(
+//              icon: new Icon(Icons.settings), title: new Text("关于")),
           new BottomNavigationBarItem(
               icon: new Icon(Icons.search), title: new Text("搜索"))
         ],
@@ -58,7 +57,7 @@ class HomePageState extends State<HomePage> {
     transitions.add(new DailyPage());
     transitions.add(new FeedPage());
     transitions.add(new ArticlePage());
-    transitions.add(new AboutPage(widget.appTheme, widget.onThemeChanged));
+//    transitions.add(new AboutPage(widget.appTheme, widget.onThemeChanged));
     transitions.add(new SearchPage());
     return new IndexedStack(
       children: transitions,

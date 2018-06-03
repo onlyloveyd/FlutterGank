@@ -46,12 +46,10 @@
 ![](/screenshot/ios/blacktheme.png)
 
 ## Todo
-1. 搜索功能
-2. 分页功能
-3. 数据缓存
-4. 瀑布流图片
-5. webview加载
-...
+1. 数据缓存
+2. 瀑布流图片
+3. 扫一扫
+4. 设置
 
 ## FAQ
 1. Missing xcode dependency: Python module "six"
@@ -65,6 +63,9 @@
 3. Dart Html Parse
 
    [解决方法](https://github.com/seriyps/html-parsers-benchmark)
+
+4. KeyBoard Causes Overflow
+   [解决办法](https://github.com/flutter/flutter/issues/13339)
 
 
 

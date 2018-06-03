@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gank/ext/data_repository.dart';
+import 'package:flutter_gank/ext/data.dart';
 import 'package:flutter_gank/page/post_page.dart';
 
 
@@ -28,7 +28,6 @@ final Map<String, Color> tagColors = {
 
 Future<String> get(String url) async {
   var httpClient = new HttpClient();
-  print(url);
   var request = await httpClient.getUrl(Uri.parse(url));
   var response = await request.close();
   return await response.transform(utf8.decoder).join();
@@ -49,14 +48,12 @@ Widget buildDailyListView(BuildContext context, AsyncSnapshot snapshot) {
       response.category.forEach((row) {
         content.addAll(response.results[row]);
       });
-      print(content);
       return buildListViewBuilder(context, content);
     }
   }
 }
 
 Widget buildCategoryListView(BuildContext context, AsyncSnapshot snapshot) {
-  print(snapshot);
   CategoryResponse categoryResponse = CategoryResponse.fromJson(
       jsonDecode(snapshot.data));
   List results = categoryResponse.results;
@@ -88,7 +85,6 @@ Widget buildRow(context, one) {
       color: Colors.white);
 
   PostData postData = PostData.fromJson(one);
-  print(postData);
   if (postData.type == '福利') {
     return
       new InkWell(
@@ -218,7 +214,6 @@ Widget buildLoadingIndicator() {
 String getTimestampString(DateTime date) {
   DateTime curDate = new DateTime.now();
   Duration diff = curDate.difference(date);
-  print("yidong");
   if (diff.inDays > 0) {
     return diff.inDays.toString() + "天前";
   } else if (diff.inHours > 0) {

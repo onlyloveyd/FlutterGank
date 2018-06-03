@@ -166,7 +166,6 @@ class AboutPageState extends State<AboutPage> {
           _buildChip(tag, haveBg))
       ;
     });
-    print(widgets);
     return widgets;
   }
 

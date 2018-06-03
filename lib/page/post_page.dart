@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-
 class PostPage extends StatefulWidget {
   final Map<String, dynamic> post;
 
@@ -17,20 +16,12 @@ class PostPage extends StatefulWidget {
 class _PostWebViewState extends State<PostPage> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
+  bool isLoaded = false;
 
-// Instance of WebView plugin
+  // Instance of WebView plugin
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
-  // On destroy stream
-  StreamSubscription _onDestroy;
-
-  // On urlChanged stream
-  StreamSubscription<String> _onUrlChanged;
-
-  // On urlChanged stream
   StreamSubscription<WebViewStateChanged> _onStateChanged;
-
-  final _history = [];
 
   void showSnack(String msg) {
     _scaffoldKey.currentState
@@ -43,48 +34,25 @@ class _PostWebViewState extends State<PostPage> {
   initState() {
     super.initState();
 
-
     flutterWebviewPlugin.close();
-
-    // Add a listener to on destroy WebView, so you can make came actions.
-    _onDestroy = flutterWebviewPlugin.onDestroy.listen((_) {
-      if (mounted) {
-        // Actions like show a info toast.
-        //_scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("Webview Destroyed")));
-      }
-    });
-
-    // Add a listener to on url changed
-    _onUrlChanged = flutterWebviewPlugin.onUrlChanged.listen((String url) {
-      if (mounted) {
-        setState(() {
-          _history.add("onUrlChanged: $url");
-        });
-      }
-    });
 
     _onStateChanged =
         flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
-          if (mounted) {
-            if (state != WebViewState.finishLoad) {
-              setState(() {
-                _history.add("onStateChanged: ${state.type} ${state.url}");
-                loading = false;
-              });
-            } else {
-              loading = true;
-            }
-          }
+      print("state: ${state.type}");
+      if (state.type == WebViewState.finishLoad) {
+        // 加载完成
+        setState(() {
+          isLoaded = true;
         });
+      }
+    });
   }
 
   @override
   void dispose() {
     // Every listener should be canceled, the same should be done with this stream.
-    _onDestroy.cancel();
-    _onUrlChanged.cancel();
-    _onStateChanged.cancel();
 
+    _onStateChanged.cancel();
     flutterWebviewPlugin.dispose();
 
     super.dispose();
@@ -92,34 +60,48 @@ class _PostWebViewState extends State<PostPage> {
 
   @override
   Widget build(BuildContext context) {
-    String title = widget.post['desc'] == null
-        ? '一个陌生的地方'
-        : widget.post['desc'];
+    print(widget.post['url']);
+    String title =
+        widget.post['desc'] == null ? '一个陌生的地方' : widget.post['desc'];
+
+    List<Widget> titleContent = [];
+    if (!isLoaded) {
+      titleContent.add(new CupertinoActivityIndicator());
+    }
+    titleContent.add(new Expanded(
+        child: new Text(title,
+            overflow: TextOverflow.ellipsis,
+            style: new TextStyle(fontSize: 16.0))));
+
     return new WebviewScaffold(
       key: _scaffoldKey,
       url: widget.post['url'],
+      withZoom: true,
+      withLocalStorage: true,
       withJavascript: true,
       appBar: new AppBar(
-        title: new Text(title),
+        title: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: titleContent,
+        ),
+        //title: new Text(title),
         actions: <Widget>[
-          new Padding(padding: const EdgeInsets.all(4.0),
+          new Padding(
+            padding: const EdgeInsets.all(4.0),
             child: new IconButton(
               icon: new Icon(Icons.refresh),
-              onPressed: () {
-
-              },),
+              onPressed: () {},
+            ),
           ),
-          new Padding(padding: const EdgeInsets.all(4.0),
+          new Padding(
+            padding: const EdgeInsets.all(4.0),
             child: new IconButton(
               icon: new Icon(Icons.share),
-              onPressed: () {
-
-              },),
+              onPressed: () {},
+            ),
           ),
-
         ],
       ),
     );
   }
-
 }

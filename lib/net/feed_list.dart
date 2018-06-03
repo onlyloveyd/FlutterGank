@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gank/api/Api.dart';
 import 'package:flutter_gank/ext/constant.dart' as ext;
-import 'package:flutter_gank/ext/data_repository.dart';
+import 'package:flutter_gank/ext/data.dart';
 import 'package:flutter_gank/ext/http.dart';
 
 // ignore: must_be_immutable
