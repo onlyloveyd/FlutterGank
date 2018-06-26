@@ -48,6 +48,7 @@ final List<AppTheme> kAllAppThemes = <AppTheme>[
     name: 'Purple',
     icon: Icons.brightness_6,
     theme: new ThemeData(
+      toggleableActiveColor: _kPurpleSwatch[500],
       brightness: Brightness.light,
       primarySwatch: _kPurpleSwatch,
       buttonColor: _kPurpleSwatch[500],

@@ -1,0 +1,80 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter build apk
+
+## exception
+
+FormatException: FormatException: Bad UTF-8 encoding 0xc3 (at offset 168)
+
+```
+#0      _Utf8Decoder.convert (dart:convert/utf.dart:490)
+#1      _Utf8ConversionSink.addSlice (dart:convert/string_conversion.dart:345)
+#2      _Utf8ConversionSink.add (dart:convert/string_conversion.dart:341)
+#3      _ConverterStreamEventSink.add (dart:convert/chunked_conversion.dart:86)
+#4      _SinkTransformerStreamSubscription._handleData (dart:async/stream_transformers.dart:120)
+#5      _rootRunUnary (dart:async/zone.dart:1134)
+#6      _CustomZone.runUnary (dart:async/zone.dart:1031)
+#7      _CustomZone.runUnaryGuarded (dart:async/zone.dart:933)
+#8      _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:336)
+#9      _BufferingStreamSubscription._add (dart:async/stream_impl.dart:263)
+#10     _StreamController&&_SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:763)
+#11     _StreamController._add (dart:async/stream_controller.dart:639)
+#12     _StreamController.add (dart:async/stream_controller.dart:585)
+#13     _Socket._onData (dart:io-patch/socket_patch.dart:1672)
+#14     _rootRunUnary (dart:async/zone.dart:1138)
+#15     _CustomZone.runUnary (dart:async/zone.dart:1031)
+#16     _CustomZone.runUnaryGuarded (dart:async/zone.dart:933)
+#17     _BufferingStreamSubscription._sendData (dart:async/stream_impl.dart:336)
+#18     _BufferingStreamSubscription._add (dart:async/stream_impl.dart:263)
+#19     _StreamController&&_SyncStreamControllerDispatch._sendData (dart:async/stream_controller.dart:763)
+#20     _StreamController._add (dart:async/stream_controller.dart:639)
+#21     _StreamController.add (dart:async/stream_controller.dart:585)
+#22     new _RawSocket.<anonymous closure> (dart:io-patch/socket_patch.dart:1245)
+#23     _NativeSocket.issueReadEvent.issue (dart:io-patch/socket_patch.dart:797)
+#24     _microtaskLoop (dart:async/schedule_microtask.dart:41)
+#25     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50)
+#26     _runPendingImmediateCallback (dart:isolate-patch/dart:isolate/isolate_patch.dart:113)
+#27     _RawReceivePortImpl._handleMessage (dart:isolate-patch/dart:isolate/isolate_patch.dart:166)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel master, v0.5.6-pre.39, on Microsoft Windows [Version 10.0.17134.112], locale zh-CN)
+    • Flutter version 0.5.6-pre.39 at D:\AndroidSDK\flutter
+    • Framework revision a18f5e84a1 (6 hours ago), 2018-06-20 20:23:51 -0400
+    • Engine revision 549c855e89
+    • Dart version 2.0.0-dev.63.0.flutter-4c9689c1d2
+
+[✓] Android toolchain - develop for Android devices (Android SDK 27.0.3)
+    • Android SDK at D:\AndroidSDK
+    • Android NDK location not configured (optional; useful for native profiling support)
+    • Platform android-P, build-tools 27.0.3
+    • Java binary at: D:\InstallFile\android-studio-ide-181.4823740-windows\android-studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1136-b04)
+    • All Android licenses accepted.
+
+[✓] Android Studio (version 3.1)
+    • Android Studio at D:\AndroidStudio
+    • Flutter plugin version 25.0.1
+    • Dart plugin version 173.4700
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1024-b02)
+
+[✓] Android Studio (version 3.2)
+    • Android Studio at D:\InstallFile\android-studio-ide-181.4823740-windows\android-studio
+    ✗ Flutter plugin not installed; this adds Flutter specific functionality.
+    ✗ Dart plugin not installed; this adds Dart specific functionality.
+    • Java version OpenJDK Runtime Environment (build 1.8.0_152-release-1136-b04)
+
+[✓] IntelliJ IDEA Ultimate Edition (version 2017.2)
+    • IntelliJ at D:\IntelliJ IDEA 2017.2.5
+    • Flutter plugin version 21.2.2
+    • Dart plugin version 172.4343.25
+
+[✓] Connected devices (1 available)
+    • FRD DL00 • NXTDU16923001820 • android-arm64 • Android 7.0 (API 24)
+
+• No issues found!
+```
