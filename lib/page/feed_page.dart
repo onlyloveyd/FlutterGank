@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gank/net/feed_list.dart';
 import 'package:flutter_gank/ext/constant.dart' as ext;
 
+/// 分类阅读 通用列表界面
 class FeedPage extends StatefulWidget {
 
   @override

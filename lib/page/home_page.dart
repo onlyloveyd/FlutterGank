@@ -5,6 +5,7 @@ import 'package:flutter_gank/page/feed_page.dart';
 import 'package:flutter_gank/page/search_page.dart';
 import 'package:flutter_gank/theme/theme.dart';
 
+///主界面
 class HomePage extends StatefulWidget {
 
   final AppTheme appTheme;

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_gank/net/daily_list.dart';
 
+///每日干货
 class DailyPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new DailyPageState();

@@ -9,6 +9,7 @@ import 'package:flutter_gank/page/post_page.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parse;
 
+///匠心写作
 class ArticlePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new ArticlePageState();

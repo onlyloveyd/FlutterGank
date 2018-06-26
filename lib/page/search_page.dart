@@ -23,6 +23,7 @@ const List<String> filterType = const <String>[
   '瞎推荐',
 ];
 
+///搜索界面
 class SearchPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _SearchPageState();

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+/// 网页展示界面
 class PostPage extends StatefulWidget {
   final Map<String, dynamic> post;
 
