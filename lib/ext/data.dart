@@ -83,7 +83,7 @@ class SearchResponse {
 
 class SearchData {
 
-  String ganhuo_id;
+  String ganHuoId;
   String desc;
   String publishedAt;
   String readability;
@@ -91,10 +91,11 @@ class SearchData {
   String url;
   String who;
 
-  SearchData(this.ganhuo_id, this.desc, this.publishedAt,  this.readability, this.type, this.url,  this.who);
+  SearchData(this.ganHuoId, this.desc, this.publishedAt, this.readability,
+      this.type, this.url, this.who);
 
   SearchData.fromJson(Map<String, dynamic> json){
-    this.ganhuo_id = json['ganhuo_id'];
+    this.ganHuoId = json['ganhuo_id'];
     this.desc = json['desc'];
     this.publishedAt = json['publishedAt'];
     this.readability = json['readability'];
@@ -105,7 +106,7 @@ class SearchData {
 
   Map<String, dynamic> toJson() =>
       {
-        'ganhuo_id': ganhuo_id,
+        'ganhuo_id': ganHuoId,
         'desc': desc,
         'publishedAt': publishedAt,
         'readability': readability,

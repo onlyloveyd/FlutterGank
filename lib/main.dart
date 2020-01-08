@@ -18,7 +18,6 @@ class AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new MaterialApp(
       title: '干货集中营',
       home: new HomePage(_appTheme,(theme) {

@@ -47,7 +47,7 @@ class _FeedListState extends State<FeedList> {
   }
 
   getNewsList(bool isLoadMore) {
-    var url = Api.FEED_URL;
+    var url = Api.feedUrl;
     url += widget.feedType + '/10/' + this.curPage.toString();
     print("feedListUrl: $url");
     HttpExt.get(url, (data) {

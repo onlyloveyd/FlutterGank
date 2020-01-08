@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gank/theme/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-///关于界面
 class AboutPage extends StatefulWidget {
 
   AppTheme appTheme;

@@ -144,27 +144,6 @@ class ArticlePageState extends State<ArticlePage> {
     return await
     response.transform(utf8.decoder).join();
   }
-
-  Widget _buildLoadingIndicator() {
-    return new Center(
-      child: new Card(
-        elevation: 4.0,
-        child: new Padding(
-          padding: const EdgeInsets.all(8.0),
-          child:
-          new Wrap(
-            direction: Axis.vertical,
-            spacing: 8.0,
-            children: <Widget>[
-              new CupertinoActivityIndicator(),
-              new Text('正在加载中...'),
-            ],
-            crossAxisAlignment: WrapCrossAlignment.center,
-          ),),),
-    );
-  }
-
-
 }
 
 class Post {

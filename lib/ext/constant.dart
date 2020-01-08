@@ -8,10 +8,10 @@ import 'package:flutter_gank/ext/data.dart';
 import 'package:flutter_gank/page/post_page.dart';
 
 
-final String CATEGORY_URL_PREFIX = 'http://gank.io/api/data/';
+final String categoryUrlPrefix = 'http://gank.io/api/data/';
 
 String generateCategoryUrl(feedType, pageSize) {
-  return CATEGORY_URL_PREFIX + feedType + '/' + pageSize.toString() + '/';
+  return categoryUrlPrefix + feedType + '/' + pageSize.toString() + '/';
 }
 
 

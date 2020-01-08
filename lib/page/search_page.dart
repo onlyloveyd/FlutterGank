@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -39,7 +38,7 @@ class _SearchPageState extends State<SearchPage> {
   var keyWord = "";
 
   ScrollController _controller = new ScrollController();
-  TextEditingController _text_controller = new TextEditingController();
+  TextEditingController _textController = new TextEditingController();
 
   _SearchPageState() {
     _controller.addListener(() {
@@ -64,7 +63,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _doSearch(bool isLoadMore) {
-    var url = Api.SEARCH_URL; //listview/category/Android/count/10/page/1
+    var url = Api.searchUrl; //listview/category/Android/count/10/page/1
     url += keyWord +
         '/category/' +
         _searchType.toString() +
@@ -115,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
         style: new TextStyle(fontSize: 16.0, color: Colors.black),
         autofocus: false,
         maxLines: 1,
-        controller: _text_controller,
+        controller: _textController,
         decoration: new InputDecoration(
           hintText: '搜索关键词',
           hintStyle:
@@ -127,12 +126,12 @@ class _SearchPageState extends State<SearchPage> {
           suffixIcon: new IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
-                if (_text_controller.text == null || _text_controller.text.isEmpty) {
+                if (_textController.text == null ||
+                    _textController.text.isEmpty) {
                   _showSnackBar("请输入关键字");
                 } else {
                   setState(() {
-                    print("yidong -- text = " + _text_controller.text);
-                    keyWord = _text_controller.text;
+                    keyWord = _textController.text;
                     _doSearch(false);
                   });
                 }
@@ -220,8 +219,6 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _buildRow(context, one) {
-    final ThemeData theme = Theme.of(context);
-
     SearchData searchData = SearchData.fromJson(one);
     print(searchData);
     return new InkWell(
